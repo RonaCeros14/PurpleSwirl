@@ -173,32 +173,63 @@
                     <th>Order Date</th>
                     <th>Other Details</th>
                     <th>Status</th>
-                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php  
-                    include("connectionString.php");  
-                    $queryOrder = "SELECT * FROM tbl_customerorder inner join tbl_customerorder on tbl_orderitems.productID = tbl_menu.productID inner join tbl_orderitems.orderID = tbl_customerorder.orderID ORDER BY tbl_customerorder.orderID DESC";
-                    $resultOrder = mysqli_query($connect, $queryOrder); 
-                    while($row = mysqli_fetch_array($resultOrder))  
-                    {  
-                  ?> 
                       <tr>
-                        <td>
-                          <a class="btn btn-success" href="viewOrder.php?id=<?php echo $row['orderID'];?>"><i class="icon_info_alt"></i></a>
-                        </td>
-                        <td> <?php echo $row['orderID'];?> </td>
-                        <td> <?php echo $row['productName'];?> </td>
-                        <td> <?php echo $row['quantity'];?> </td>
-                        <td> <?php echo $row['totalPrice'];?> </td>
-                        <td> <?php echo $row['ordeDate'];?> </td>
-                        <td> <?php echo $row['Status'];?> </td>
+                        <td>5</td>
+                        <td>Original Flavor (Medium)</td>
+                        <td>2</td>
+                        <td>180</td>
+                        <td>24-10-18</td>
+                        <td>None</td>
+                        <td>Processing</td>
                       </tr>
-                      <?php
-                    }
-                    ?>   
-                  </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>Original Flavor (Medium)</td>
+                        <td>2</td>
+                        <td>180</td>
+                        <td>24-10-18</td>
+                        <td>None</td>
+                        <td>Processing</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>Taro Flavored Frozen Yogurt (Small)</td>
+                        <td>1</td>
+                        <td>80</td>
+                        <td>24-10-18</td>
+                        <td>M&Ms as toppings</td>
+                        <td>Delivering</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>New York Cheese Cake (Large)</td>
+                        <td>3</td>
+                        <td>295</td>
+                        <td>23-10-18</td>
+                        <td>None</td>
+                        <td>Done</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Original Flavor (Medium)</td>
+                        <td>5</td>
+                        <td>325</td>
+                        <td>22-10-18</td>
+                        <td>None</td>
+                        <td>Done</td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td>Strawberry Flavored Frozen Yogurt (Medium)</td>
+                        <td>1</td>
+                        <td>130</td>
+                        <td>20-10-18</td>
+                        <td>Raspberry and Nutella as toppings.</td>
+                        <td>Done</td>
+                      </tr>
                 </tbody>
               </table>
             </section>

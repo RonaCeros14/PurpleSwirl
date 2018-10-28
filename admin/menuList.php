@@ -178,7 +178,7 @@ session_start();
                   <tbody>
                     <?php  
                     include("connectionString.php");  
-                    $queryMenu = "SELECT * FROM tbl_menu";
+                    $queryMenu = "SELECT * FROM tbl_menu Order by productID desc";
                     $resultProduct = mysqli_query($connect, $queryMenu);
                     while($row = mysqli_fetch_array($resultProduct))  
                     {  

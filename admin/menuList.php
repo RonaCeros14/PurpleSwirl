@@ -218,7 +218,7 @@ session_start();
                         <td> <?php echo $row['productName'];?> </td>
                         <td> <?php echo $row['productDescription'];?> </td>
                         <td> <?php echo $row['unitPrice'];?> </td>
-                        <td> <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['productImage']).'"" />';?> </td>
+                        <td width="20%"> <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['productImage']).'"" />';?> </td>
                       </tr>
                       <?php
                     }

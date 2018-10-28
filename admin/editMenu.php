@@ -1,60 +1,70 @@
 <?php
+
+include("connectionString.php");
 session_start();
-	// incwluding the database connection file
-include_once("connectionString.php");
-  	//error_reporting(0);
 
-if(isset($_POST['btnUpdateItem']))
-{	
-  $varcharItemID = mysqli_real_escape_string($connect, $_POST['id']);
-  $varcharItemName = mysqli_real_escape_string($connect, $_POST['txtbxItemName']);
-  $varcharItemDescription= mysqli_real_escape_string($connect, $_POST['txtbxItemDescription']);
-  $varcharItemMeasurement = mysqli_real_escape_string($connect, $_POST['txtbxItemMeasurement']);
-  $doubleItemQuantity = mysqli_real_escape_string($connect, $_POST['txtbxItemQuantity']);
+$menuProductId = $_GET['id'];
 
-	// checking empty fields
-  if(empty($varcharItemName))
+/*if($_SESSION['sessionUsername'] == null)
+{
+  header('location:login.php');
+}*/
+//selecting data associated with this particular id
+$result = mysqli_query($connect, "SELECT * FROM tbl_menu WHERE productID = $menuProductId");
+
+while($res = mysqli_fetch_array($result))
+{
+  $varcharProductName = $res['productName'];
+  $varcharProductDescription = $res['productDescription'];
+  $doubleUnitPrice = $res['unitPrice'];
+  $varcharProductImage = $res['productImage'];
+}
+if(isset($_POST['btnUpdateProduct']))
+{
+  $varcharProductName = mysqli_real_escape_string($connect, $_POST['txtbxProductName']);
+  $varcharProductDescription = mysqli_real_escape_string($connect, $_POST['txtbxProductDescription']);
+  $doubleUnitPrice = mysqli_real_escape_string($connect, $_POST['txtbxUnitPrice']);
+  $varcharProductImage = addslashes(file_get_contents($_FILES["imgProductImage"]["tmp_name"]));
+  $check = getimagesize($_FILES["imgProductImage"]["tmp_name"]);
+  $uploadOk = 0;
+  if($check !== false)
+  {
+    $uploadOk = 1;
+  }
+  else
+  {
+    $uploadOk = 0;
+  }
+  	///checking for empty fields
+  if(empty($varcharProductName))
   {
     $message = "Name field is empty!";
     echo "<script type='text/javascript'>alert('$message');</script>";
   }
-  else if(empty($varcharItemMeasurement))
+  else if(empty($doubleUnitPrice))
   {
-    $message = "Measurement field is empty!";
+    $message - "Price field is empty";
     echo "<script type='text/javascript'>alert('$message');</script>";
   }
-  else if(empty($doubleItemQuantity))
+  else
   {
-    $message = "Quantity field is empty!";
-    echo "<script type='text/javascript'>alert('$message');</script>";
-  }
-  else 
-  {	
-  	//updating the table
-    $queryEditItem = "UPDATE tbl_itemlist SET itemName='$varcharItemName',itemDescription='$varcharItemDescription', measurement='$varcharItemMeasurement',quantity='$doubleItemQuantity' WHERE itemID = $varcharItemID";
-    if(mysqli_query($connect, $queryEditItem))
+	// if all the fields are filled (not empty) 
+	//insert data to database	
+    $queryUpdateProduct ="UPDATE tbl_menu SET productName = '$varcharProductName', productDescription = '$varcharProductDescription', productImage = '$varcharProductImage' WHERE productID = '$menuProductId'";
+    //echo $queryUpdateProduct;
+    if(mysqli_query($connect, $queryUpdateProduct))
     {
-      $message = "Item updated successfully!";
+      $message = "Item added successfully!";
       echo "<script type='text/javascript'>alert('$message');</script>";
-      //redirectig to the display page. In our case, it is index.php
-      echo "<script type='text/javascript'>location.href = 'itemStocks.php';</script>";
+      echo "<script type='text/javascript'>window.location.href='menuList.php';</script>";
+    }
+    else
+    {
+      echo mysqli_error($connect);
     }
   }
 }
-?>
-<?php
-//getting id from url
-$id = $_GET['id'];
-//selecting data associated with this particular id
-$result = mysqli_query($connect, "SELECT * FROM tbl_itemlist WHERE itemID = $id");
 
-while($res = mysqli_fetch_array($result))
-{
-	$txtbxItemName = $res['itemName'];
-	$txtbxItemDescription = $res['itemDescription'];
-	$txtbxItemMeasurement = $res['measurement'];
-	$doubleItemQuantity = $res['quantity'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +78,7 @@ while($res = mysqli_fetch_array($result))
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Purple Swirl</title>
+  <title>Purple Swirl | Edit Product</title>
 
   <!-- Bootstrap CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -230,10 +240,10 @@ while($res = mysqli_fetch_array($result))
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-files-o"></i> Items and Stock</h3>
+            <h3 class="page-header"><i class="fa fa-files-o"></i> Menu List</h3>
             <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="itemStocks.php">Items</a></li>
-              <li><i class="icon_document_alt"></i>Edit Items</li>
+              <li><i class="fa fa-home"></i><a href="menuList.php">Menu</a></li>
+              <li><i class="icon_document_alt"></i>Add Products</li>
             </ol>
           </div>
         </div>
@@ -242,40 +252,41 @@ while($res = mysqli_fetch_array($result))
           <div class="col-lg-12">
             <section class="panel">
               <header class="panel-heading">
-                Update Item Information
+                Existing Product Information
               </header>
               <div class="panel-body">
                 <div class="form">
-                  <form class="form-validate form-horizontal" id="feedback_form" method="POST" action="">
-                  	<input type="hidden" name="id" value=<?php echo $id ?>>
+                  <form class="form-validate form-horizontal" id="feedback_form" method="POST" enctype="multipart/form-data">
                     <div class="form-group ">
-                      <label for="cname" class="control-label col-lg-2">Item Name <span class="required">*</span></label>
+                      <label for="cname" class="control-label col-lg-2">Product Name <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" id="itemName" name="txtbxItemName" minlength="5" type="text" value="<?php echo $txtbxItemName;?>" required />
+                        <input class="form-control" id="productName" name="txtbxProductName" minlength="5" type="text" value="<?php echo $varcharProductName; ?>" required />
                       </div>
                     </div>
                     <div class="form-group ">
-                      <label for="cemail" class="control-label col-lg-2">Description <span class=""></span></label>
+                      <label for="cemail" class="control-label col-lg-2">Description <span class="required"></span></label>
                       <div class="col-lg-10">
-                        <input class="form-control " id="itemDescription" type="text" name="txtbxItemDescription" value="<?php echo $txtbxItemDescription;?>"/>
+                        <input class="form-control " id="productDescription" type="text" name="txtbxProductDescription" value="<?php echo $varcharProductDescription; ?>" />
                       </div>
                     </div>
                     <div class="form-group ">
-                      <label for="curl" class="control-label col-lg-2">Measurement<span class="required">*</span></label>
+                      <label for="curl" class="control-label col-lg-2">Unit Price <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control " id="itemMeasurement" type="text" name="txtbxItemMeasurement" value="<?php echo $txtbxItemMeasurement;?>"/>
+                        <input class="form-control " id="unitPrice" type="text" name="txtbxUnitPrice" value="<?php echo $doubleUnitPrice; ?>" />
                       </div>
                     </div>
+                    <!--image upload -->
                     <div class="form-group ">
-                      <label for="cname" class="control-label col-lg-2">Quantity <span class="required">*</span></label>
+                      <label for="cname" class="control-label col-lg-2">Image <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" id="itemQuanity" name="txtbxItemQuantity" minlength="0" type="number" value="<?php echo $doubleItemQuantity;?>" required />
+                        <input class="form-control" type="file" name="imgProductImage" accept="image/x-png,image/gif,image/jpeg,image/jpg" value="HAHA" required />
                       </div>
                     </div>
+                    <!--end of image upload-->
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <button class="btn btn-primary" type="submit" name="btnUpdateItem" value="Update">Update</button>
-                        <a class="btn btn-default" href="itemStocks.php" type="button" name>Cancel</a>
+                        <button class="btn btn-primary" type="submit" name="btnUpdateProduct" >Save</button>
+                        <a class="btn btn-default" href="menuList.php" type="submit" name="btnCancel">Cancel</a>
                       </div>
                     </div>
                   </form>
@@ -288,10 +299,6 @@ while($res = mysqli_fetch_array($result))
       </section>
     </section>
     <!--main content end-->
-
-
-
-
 
     <!-- javascripts -->
     <script src="js/jquery.js"></script>
@@ -381,3 +388,8 @@ while($res = mysqli_fetch_array($result))
     </script>
   </body>
   </html>
+
+
+
+
+

@@ -8,17 +8,13 @@ if (isset($_POST['btnLogin']))
   $queryAccount = "SELECT * FROM tbl_adminaccount WHERE username ='$varcharUsername' AND password='$varcharPassword' ";
   $resultAccount = mysqli_query($connect, $queryAccount);
 
-  while($res = mysqli_fetch_array($resultAccount)) 
-  {
-    $varcharAdminUsername = $res['username'];
-    $varcharAdminPassword = $res['password'];
-
-  }
   if (mysqli_num_rows($resultAccount) == 1) 
   {
     $_SESSION['sessionUsername'] = $varcharUsername;
     $_SESSION['sessionPassword'] = $varcharPassword;
-    header('location: index.php');
+    $message = "You will now be redirected to your account ".$_SESSION['sessionUsername'];
+    echo "<script type='text/javascript'>alert('$message');</script>";
+    echo "<script type='text/javascript'>window.location.href='index.php';</script>";
   }
   else 
   {
@@ -62,12 +58,12 @@ if (isset($_POST['btnLogin']))
       <div class="login-wrap">
         <p class="login-img"><i class="icon_lock_alt"></i></p>
         <div class="input-group">
-          <span class="input-group-addon"><i class="icon_profile" name="txtbxUsername"></i></span>
-          <input type="text" class="form-control" placeholder="Username" autofocus required>
+          <span class="input-group-addon"><i class="icon_profile" ></i></span>
+          <input type="text" class="form-control" placeholder="Username" name="txtbxUsername" autofocus required>
         </div>
         <div class="input-group">
-          <span class="input-group-addon"><i class="icon_key_alt" name="txtbxPassword"></i></span>
-          <input type="password" class="form-control" placeholder="Password" required>
+          <span class="input-group-addon"><i class="icon_key_alt" ></i></span>
+          <input type="password" class="form-control" placeholder="Password" name="txtbxPassword" required>
         </div>
         <label class="checkbox">
                 <input type="checkbox" value="remember-me"> Remember me

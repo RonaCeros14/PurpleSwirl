@@ -2,7 +2,7 @@
 	session_start();
 	// incwluding the database connection file
 	include_once("connectionString.php");
-  	//error_reporting(0);
+
 
 	if(isset($_POST['btnUpdateItem']))
 	{	

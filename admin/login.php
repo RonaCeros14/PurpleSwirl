@@ -65,10 +65,7 @@ if (isset($_POST['btnLogin']))
           <span class="input-group-addon"><i class="icon_key_alt" ></i></span>
           <input type="password" class="form-control" placeholder="Password" name="txtbxPassword" required>
         </div>
-        <label class="checkbox">
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        <input type="submit" name="btnLogin" class="btn btn-primary btn-lg btn-block" ></input>
+        <input type="submit" name="btnLogin" class="btn btn-primary btn-lg btn-block" value="LOGIN"></input>
       </div>
     </form>
   </div>

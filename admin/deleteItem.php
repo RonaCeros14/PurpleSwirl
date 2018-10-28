@@ -18,7 +18,7 @@
 		if(mysqli_query($connect, $queryDeleteItem))
 		{
 			//redirectig to the display page. 
-			$message = "Delete Successful!"
+			$message = "Delete Successful!";
 			echo "<script type='text/javascript'>location.href = 'itemStocks.php';</script>";
 		}
 		else

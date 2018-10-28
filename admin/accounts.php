@@ -1,11 +1,13 @@
 <?php
   include_once ("connectionString.php");
   session_start();
+  error_reporting(0);
 
   /*if($_SESSION['sessionUsername'] == null)
   {
     header('location:login.php');
   }*/
+
 ?>
 
 <!DOCTYPE html>
@@ -176,7 +178,7 @@
     </aside>
     <!--sidebar end-->
 
-    <!--main content start-->
+ <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
         <div class="row">
@@ -189,9 +191,9 @@
             <section class="panel">
               
               <table class="table table-striped table-advance table-hover">
-                <tbody>
-                  <tr>
-                    <th></th>
+                <thead>
+                   <tr>
+                    <th>Actions</th>
                     <th>Username</th>
                     <th>First Name</th>
                     <th>Last Name</th>
@@ -199,20 +201,30 @@
                     <th>Password</th>
                     <th>Image</th>
                   </tr>
+                </thead>
+                <tbody>
+                  <?php  
+                      include("connectionString.php");  
+                      $queryOrder = "SELECT * FROM tbl_customerorder ORDER BY orderID DESC";
+                      $resultOrder = mysqli_query($connect, $queryOrder); 
+                      while($row = mysqli_fetch_array($resultOrder))  
+                      {  
+                  ?> 
                   <tr>
-                    <td width="15%">
-                      <div class="btn-group">
-                        <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                        <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                      </div>
-                     </td>
-                    <td>ronamay</td>
-                    <td>Rona May</td>
-                    <th>de Juan</th>
-                    <th>2ndrmzamoras@gmail.com</th>
-                    <th>ronarona</th>
-                    <th>None</th>
+                    <td>
+                        <a class="btn btn-success" href="editOrder.php??id=<?php echo $row['orderID'];?>"><i class="icon_pencil-edit_alt"></i></a>
+                        <a class="btn btn-danger" href="deleteOrder.php?id=<?php echo $row['orderID'];?>" onClick="return confirm('Are you sure you want to delete?')"><i class="icon_trash_alt"></i></a>
+                    </td>
+                    <td> <?php echo $row['orderID'];?> </td>
+                    <td> <?php echo $row['quantity'];?> </td>
+                    <td> <?php echo $row[''];?> </td>
+                    <td> <?php echo $row['measurement'];?> </td>
+                    <td> <?php echo $row['quantity'];?> </td>
+                    <td> <?php echo $row['dateUpdated'];?> </td>
                   </tr>
+                  <?php
+                    }
+                  ?>   
                 </tbody>
               </table>
             </section>
@@ -309,7 +321,5 @@
         });
       });
     </script>
-
 </body>
-
 </html>

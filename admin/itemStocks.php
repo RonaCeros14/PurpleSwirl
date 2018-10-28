@@ -205,15 +205,15 @@
                 <tbody>
                   <?php  
                       include("connectionString.php");  
-                      $queryItem = "SELECT * FROM tbl_itemlist";
+                      $queryItem = "SELECT * FROM tbl_itemlist ORDER BY itemID DESC";
                       $resultItem = mysqli_query($connect, $queryItem); 
                       while($row = mysqli_fetch_array($resultItem))  
                       {  
                   ?> 
                   <tr>
                     <td>
-                        <a class="btn btn-success" href="editItem.php"><i class="icon_pencil-edit_alt"></i></a>
-                        <a class="btn btn-danger" href="deleteItem.php?id=<?php echo $row['itemID']; ?>" onClick="return confirm('Are you sure you want to delete?')"><i class="icon_trash_alt"></i></a>
+                        <a class="btn btn-success" href="editItem.php??id=<?php echo $row['itemID'];?>"><i class="icon_pencil-edit_alt"></i></a>
+                        <a class="btn btn-danger" href="deleteItem.php?id=<?php echo $row['itemID'];?>" onClick="return confirm('Are you sure you want to delete?')"><i class="icon_trash_alt"></i></a>
                     </td>
                     <td> <?php echo $row['itemID'];?> </td>
                     <td> <?php echo $row['itemName'];?> </td>

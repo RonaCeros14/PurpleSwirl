@@ -12,7 +12,9 @@ if (isset($_POST['btnLogin']))
   {
     $_SESSION['sessionUsername'] = $varcharUsername;
     $_SESSION['sessionPassword'] = $varcharPassword;
-    header('location: index.php');
+    $message = "You will now be redirected to your account ".$_SESSION['sessionUsername'];
+    echo "<script type='text/javascript'>alert('$message');</script>";
+    echo "<script type='text/javascript'>window.location.href='index.php';</script>";
   }
   else 
   {
@@ -56,12 +58,12 @@ if (isset($_POST['btnLogin']))
       <div class="login-wrap">
         <p class="login-img"><i class="icon_lock_alt"></i></p>
         <div class="input-group">
-          <span class="input-group-addon"><i class="icon_profile"></i></span>
-          <input type="text" class="form-control" name="txtbxUsername" placeholder="Username" autofocus required>
+          <span class="input-group-addon"><i class="icon_profile" ></i></span>
+          <input type="text" class="form-control" placeholder="Username" name="txtbxUsername" autofocus required>
         </div>
         <div class="input-group">
-          <span class="input-group-addon" ><i class="icon_key_alt"></i></span>
-          <input type="password" name="txtbxPassword" class="form-control" placeholder="Password" required>
+          <span class="input-group-addon"><i class="icon_key_alt" ></i></span>
+          <input type="password" class="form-control" placeholder="Password" name="txtbxPassword" required>
         </div>
         <input type="submit" name="btnLogin" class="btn btn-primary btn-lg btn-block" value="LOGIN"></input>
       </div>

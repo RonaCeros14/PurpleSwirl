@@ -14,13 +14,13 @@
 		$id = $_GET['id'];
 
 		//deleting the row from table
-		$queryDeleteItem ="DELETE FROM tbl_itemlist WHERE itemID = $id";
-		if(mysqli_query($connect, $queryDeleteItem))
+		$queryDeleteMenu ="DELETE FROM tbl_menu WHERE productID = $id";
+		if(mysqli_query($connect, $queryDeleteMenu))
 		{
 			//redirectig to the display page. 
 			$message = "Delete Successful!";
 			echo "<script type='text/javascript'>alert('$message');</script>";
-			echo "<script type='text/javascript'>location.href = 'itemStocks.php';</script>";
+			echo "<script type='text/javascript'>location.href = 'menuList.php';</script>";
 		}
 		else
 		{

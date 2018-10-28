@@ -68,7 +68,7 @@ while($res = mysqli_fetch_array($result))
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Purple Swirl</title>
+  <title>Purple Swirl | Edit Item</title>
 
   <!-- Bootstrap CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -122,38 +122,14 @@ while($res = mysqli_fetch_array($result))
             <ul class="dropdown-menu extended notification">
               <div class="notify-arrow notify-arrow-blue"></div>
               <li>
-                <p class="blue">You have 4 new notifications</p>
+                <p class="blue">You have 1 new notifications</p>
               </li>
               <li>
                 <a href="#">
                   <span class="label label-primary"><i class="icon_profile"></i></span>
-                  Friend Request
+                  Order ID : 5
                   <span class="small italic pull-right">5 mins</span>
                 </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="label label-warning"><i class="icon_pin"></i></span>
-                  John location.
-                  <span class="small italic pull-right">50 mins</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="label label-danger"><i class="icon_book_alt"></i></span>
-                  Project 3 Completed.
-                  <span class="small italic pull-right">1 hr</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="label label-success"><i class="icon_like"></i></span>
-                  Mick appreciated your work.
-                  <span class="small italic pull-right"> Today</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">See all notifications</a>
               </li>
             </ul>
           </li>
@@ -170,7 +146,7 @@ while($res = mysqli_fetch_array($result))
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <a href="#"><i class="icon_profile"></i> My Profile</a>
+                <a href="profile.php"><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
                 <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
@@ -183,7 +159,6 @@ while($res = mysqli_fetch_array($result))
       </div>
     </header>
     <!--header end-->
-
     <!--sidebar start-->
     <aside>
       <div id="sidebar" class="nav-collapse ">
@@ -216,7 +191,6 @@ while($res = mysqli_fetch_array($result))
             <ul class="sub">
               <li><a class="" href="menuList.php">Menu List</a></li>
               <li><a class="" href="toppings.php">Toppings</a></li>
-              <li><a class="" href="accounts.php">Manage Account</a></li>
             </ul>
           </li>
         </ul>
@@ -224,7 +198,6 @@ while($res = mysqli_fetch_array($result))
       </div>
     </aside>
     <!--sidebar end-->
-
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">

@@ -68,44 +68,20 @@
           <li id="alert_notificatoin_bar" class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
-                            <i class="icon-bell-l"></i>
-                            <span class="badge bg-important">7</span>
-                        </a>
+              <i class="icon-bell-l"></i>
+              <span class="badge bg-important">7</span>
+            </a>
             <ul class="dropdown-menu extended notification">
               <div class="notify-arrow notify-arrow-blue"></div>
               <li>
-                <p class="blue">You have 4 new notifications</p>
+                <p class="blue">You have 1 new notifications</p>
               </li>
               <li>
                 <a href="#">
-                                    <span class="label label-primary"><i class="icon_profile"></i></span>
-                                    Friend Request
-                                    <span class="small italic pull-right">5 mins</span>
-                                </a>
-              </li>
-              <li>
-                <a href="#">
-                                    <span class="label label-warning"><i class="icon_pin"></i></span>
-                                    John location.
-                                    <span class="small italic pull-right">50 mins</span>
-                                </a>
-              </li>
-              <li>
-                <a href="#">
-                                    <span class="label label-danger"><i class="icon_book_alt"></i></span>
-                                    Project 3 Completed.
-                                    <span class="small italic pull-right">1 hr</span>
-                                </a>
-              </li>
-              <li>
-                <a href="#">
-                                    <span class="label label-success"><i class="icon_like"></i></span>
-                                    Mick appreciated your work.
-                                    <span class="small italic pull-right"> Today</span>
-                                </a>
-              </li>
-              <li>
-                <a href="#">See all notifications</a>
+                  <span class="label label-primary"><i class="icon_profile"></i></span>
+                  Order ID : 5
+                  <span class="small italic pull-right">5 mins</span>
+                </a>
               </li>
             </ul>
           </li>
@@ -113,16 +89,16 @@
           <!-- user login dropdown start-->
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img alt="" src="img/avatar1_small.jpg">
-                            </span>
-                            <span class="username">Rona May de Juan</span>
-                            <b class="caret"></b>
-                        </a>
+              <span class="profile-ava">
+                <img alt="" src="img/avatar1_small.jpg">
+              </span>
+              <span class="username">Rona May de Juan</span>
+              <b class="caret"></b>
+            </a>
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <a href="#"><i class="icon_profile"></i> My Profile</a>
+                <a href="profile.php"><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
                 <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
@@ -135,7 +111,6 @@
       </div>
     </header>
     <!--header end-->
-
     <!--sidebar start-->
     <aside>
       <div id="sidebar" class="nav-collapse ">
@@ -143,39 +118,38 @@
         <ul class="sidebar-menu">
           <li class="sub-menu">
             <a class="" href="index.php">
-                          <i class="icon_house_alt"></i>
-                          <span>Dashboard</span>
-                      </a>
+              <i class="icon_house_alt"></i>
+              <span>Dashboard</span>
+            </a>
           </li>
           <li>
             <a class="" href="manageOrders.php">
-                  <i class="icon_genius"></i>
-                  <span>Orders</span>
+              <i class="icon_genius"></i>
+              <span>Orders</span>
             </a>
           </li>
-           <li>
+          <li>
             <a class="" href="itemStocks.php">
-                  <i class="icon_genius"></i>
-                  <span>Items and Stock</span>
+              <i class="icon_genius"></i>
+              <span>Items and Stock</span>
             </a>
           </li>
           <li class="sub-menu">
             <a href="javascript:;" class="">
-                          <i class="icon_table"></i>
-                          <span>Maintenance</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
+              <i class="icon_table"></i>
+              <span>Maintenance</span>
+              <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
             <ul class="sub">
               <li><a class="" href="menuList.php">Menu List</a></li>
               <li><a class="" href="toppings.php">Toppings</a></li>
-              <li><a class="" href="accounts.php">Manage Account</a></li>
             </ul>
           </li>
         </ul>
         <!-- sidebar menu end-->
       </div>
     </aside>
-    <!--sidebar end-->
+    <!--sidebar end-->''''''''''''''''''''''''''''
 
     <!--main content start-->
     <section id="main-content">

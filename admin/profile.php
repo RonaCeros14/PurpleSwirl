@@ -2,6 +2,8 @@
   include_once ("connectionString.php");
   session_start();
 
+  //$username = $_SESSION['username'];
+  //$_SESSION['username'] = $username;
   /*if($_SESSION['sessionUsername'] == null)
   {
     header('location:login.php');
@@ -19,7 +21,7 @@
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Purple Swirl | Orders</title>
+  <title>Purple Swirl | Profile</title>
 
   <!-- Bootstrap CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -57,7 +59,7 @@
       </div>
 
       <!--logo start-->
-      <a href="index.html" class="logo">The Purple <span class="lite">Swirl</span></a>
+      <a href="index.html" class="logo">Purple <span class="lite">Swirl</span></a>
       <!--logo end-->
 
       <div class="top-nav notification-row">
@@ -150,152 +152,87 @@
     </aside>
     <!--sidebar end-->
 
-<!--main content start-->
+    <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-table"></i> Orders</h3>
+            <h3 class="page-header"><i class="fa fa-user-md"></i> Profile</h3>
           </div>
         </div>
         <div class="row">
+        <!-- page start-->
+        <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              
-
-              <table class="table table-striped table-advance table-hover">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Purchased Item/s</th>
-                    <th>Quantity</th>
-                    <th>Total Price</th>
-                    <th>Order Date</th>
-                    <th>Other Details</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php  
-                    include("connectionString.php");  
-                    $queryOrder = "SELECT * FROM tbl_customerorder inner join tbl_customerorder on tbl_orderitems.productID = tbl_menu.productID inner join tbl_orderitems.orderID = tbl_customerorder.orderID ORDER BY tbl_customerorder.orderID DESC";
-                    $resultOrder = mysqli_query($connect, $queryOrder); 
-                    while($row = mysqli_fetch_array($resultOrder))  
-                    {  
-                  ?> 
-                      <tr>
-                        <td>
-                          <a class="btn btn-success" href="viewOrder.php?id=<?php echo $row['orderID'];?>"><i class="icon_info_alt"></i></a>
-                        </td>
-                        <td> <?php echo $row['orderID'];?> </td>
-                        <td> <?php echo $row['productName'];?> </td>
-                        <td> <?php echo $row['quantity'];?> </td>
-                        <td> <?php echo $row['totalPrice'];?> </td>
-                        <td> <?php echo $row['ordeDate'];?> </td>
-                        <td> <?php echo $row['Status'];?> </td>
-                      </tr>
-                      <?php
-                    }
-                    ?>   
-                  </tr>
-                </tbody>
-              </table>
+              <header class="panel-heading tab-bg-info">
+                <ul class="nav nav-tabs">
+                  <li>
+                    <a data-toggle="tab" href="#profile">
+                                          <i class="icon-user"></i>
+                                          Profile
+                                      </a>
+                  </li>
+                </ul>
+              </header>
+              <div class="panel-body">
+                <div class="tab-content">
+                  <!-- profile -->
+                  <div id="profile" class="tab-pane">
+                    <section class="panel">
+                      <div class="panel-body bio-graph-info">
+                        <h1>Administrator</h1>
+                        <div class="row">
+                          <div class="bio-row">
+                            <p><span>First Name </span>: Rona May </p>
+                          </div>
+                          <div class="bio-row">
+                            <p><span>Last Name </span>: de Juan</p>
+                          </div>
+                          <div class="bio-row">
+                            <p><span>Email </span>: ronadejuan@gmail.com</p>
+                          </div>
+                          <div class="bio-row">
+                            <p><span>Contact Number </span>: 09321987654</p>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                    <section>
+                      <div class="row">
+                      </div>
+                    </section>
+                  </div>
+                </div>
+              </div>
             </section>
           </div>
         </div>
+
         <!-- page end-->
       </section>
     </section>
     <!--main content end-->
-
-
-    <!-- javascripts -->
+    <div class="text-right">
+    </div>
+  </section>
+  <!-- container section end -->
+  <!-- javascripts -->
   <script src="js/jquery.js"></script>
-  <script src="js/jquery-ui-1.10.4.min.js"></script>
-  <script src="js/jquery-1.8.3.min.js"></script>
-  <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
-  <!-- bootstrap -->
   <script src="js/bootstrap.min.js"></script>
   <!-- nice scroll -->
   <script src="js/jquery.scrollTo.min.js"></script>
   <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-  <!-- charts scripts -->
+  <!-- jquery knob -->
   <script src="assets/jquery-knob/js/jquery.knob.js"></script>
-  <script src="js/jquery.sparkline.js" type="text/javascript"></script>
-  <script src="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-  <script src="js/owl.carousel.js"></script>
-  <!-- jQuery full calendar -->
-  <<script src="js/fullcalendar.min.js"></script>
-    <!-- Full Google Calendar - Calendar -->
-    <script src="assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
-    <!--script for this page only-->
-    <script src="js/calendar-custom.js"></script>
-    <script src="js/jquery.rateit.min.js"></script>
-    <!-- custom select -->
-    <script src="js/jquery.customSelect.min.js"></script>
-    <script src="assets/chart-master/Chart.js"></script>
+  <!--custome script for all page-->
+  <script src="js/scripts.js"></script>
 
-    <!--custome script for all page-->
-    <script src="js/scripts.js"></script>
-    <!-- custom script for this page-->
-    <script src="js/sparkline-chart.js"></script>
-    <script src="js/easy-pie-chart.js"></script>
-    <script src="js/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="js/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="js/xcharts.min.js"></script>
-    <script src="js/jquery.autosize.min.js"></script>
-    <script src="js/jquery.placeholder.min.js"></script>
-    <script src="js/gdp-data.js"></script>
-    <script src="js/morris.min.js"></script>
-    <script src="js/sparklines.js"></script>
-    <script src="js/charts.js"></script>
-    <script src="js/jquery.slimscroll.min.js"></script>
-    <script>
-      //knob
-      $(function() {
-        $(".knob").knob({
-          'draw': function() {
-            $(this.i).val(this.cv + '%')
-          }
-        })
-      });
+  <script>
+    //knob
+    $(".knob").knob();
+  </script>
 
-      //carousel
-      $(document).ready(function() {
-        $("#owl-slider").owlCarousel({
-          navigation: true,
-          slideSpeed: 300,
-          paginationSpeed: 400,
-          singleItem: true
-
-        });
-      });
-
-      //custom select box
-
-      $(function() {
-        $('select.styled').customSelect();
-      });
-
-      /* ---------- Map ---------- */
-      $(function() {
-        $('#map').vectorMap({
-          map: 'world_mill_en',
-          series: {
-            regions: [{
-              values: gdpData,
-              scale: ['#000', '#000'],
-              normalizeFunction: 'polynomial'
-            }]
-          },
-          backgroundColor: '#eef3f7',
-          onLabelShow: function(e, el, code) {
-            el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
-          }
-        });
-      });
-    </script>
 
 </body>
 

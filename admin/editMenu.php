@@ -119,7 +119,7 @@ if(isset($_POST['btnUpdateProduct']))
       <a href="index.html" class="logo">The Purple <span class="lite">Swirl</span></a>
       <!--logo end-->
 
-      <div class="top-nav notification-row">
+     <div class="top-nav notification-row">
         <!-- notificatoin dropdown start-->
         <ul class="nav pull-right top-menu">
           <!-- alert notification start-->
@@ -132,38 +132,14 @@ if(isset($_POST['btnUpdateProduct']))
             <ul class="dropdown-menu extended notification">
               <div class="notify-arrow notify-arrow-blue"></div>
               <li>
-                <p class="blue">You have 4 new notifications</p>
+                <p class="blue">You have 1 new notifications</p>
               </li>
               <li>
                 <a href="#">
                   <span class="label label-primary"><i class="icon_profile"></i></span>
-                  Friend Request
+                  Order ID : 5
                   <span class="small italic pull-right">5 mins</span>
                 </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="label label-warning"><i class="icon_pin"></i></span>
-                  John location.
-                  <span class="small italic pull-right">50 mins</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="label label-danger"><i class="icon_book_alt"></i></span>
-                  Project 3 Completed.
-                  <span class="small italic pull-right">1 hr</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="label label-success"><i class="icon_like"></i></span>
-                  Mick appreciated your work.
-                  <span class="small italic pull-right"> Today</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">See all notifications</a>
               </li>
             </ul>
           </li>
@@ -180,7 +156,7 @@ if(isset($_POST['btnUpdateProduct']))
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <a href="#"><i class="icon_profile"></i> My Profile</a>
+                <a href="profile.php"><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
                 <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
@@ -193,7 +169,6 @@ if(isset($_POST['btnUpdateProduct']))
       </div>
     </header>
     <!--header end-->
-
     <!--sidebar start-->
     <aside>
       <div id="sidebar" class="nav-collapse ">
@@ -226,7 +201,6 @@ if(isset($_POST['btnUpdateProduct']))
             <ul class="sub">
               <li><a class="" href="menuList.php">Menu List</a></li>
               <li><a class="" href="toppings.php">Toppings</a></li>
-              <li><a class="" href="accounts.php">Manage Account</a></li>
             </ul>
           </li>
         </ul>
